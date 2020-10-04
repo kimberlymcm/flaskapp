@@ -1,0 +1,29 @@
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My First Dashboard</title>
+</head>
+<body>
+<main role="main" class="inner cover">
+ <h1 class="cover-heading">Air Quality Dashboard</h1>
+ <p class="lead">Work in progress indoor air quality graphs in San Francisco</p>
+</main>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart" id="bargraph">
+                <script>
+                    var graphs = {{plot | safe}};
+                    Plotly.plot('bargraph',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

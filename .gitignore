@@ -1,0 +1,11 @@
+# virtual env
+env/*
+__pycache__/*
+
+# File that is actually uploaded to elastic beanstalk
+*.zip
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
