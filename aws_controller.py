@@ -1,21 +1,32 @@
 ''' Util functions to interface with Dynamodb databases '''
+from datetime import datetime
 
 import boto3
 from boto3.dynamodb.conditions import Key
+import pandas as pd
 
 
-dynamo_client = boto3.client('dynamodb', region_name='us-west-2')
+# Creating the DynamoDB Table Resource
+dynamodb = boto3.resource('dynamodb', region_name='us-west-2')
+table = dynamodb.Table('iot_table')
 
-def get_data(items=["pm1", "pm25", "pm10"]):
-    cols_to_extract = f"device_id, #time_taken"
-    for item in items:
-        cols_to_extract += f", payload.{item}"
-    #cols_to_extract = f"device_id, #time_taken, payload.{item}"
-    response = dynamo_client.query(
-        ProjectionExpression=cols_to_extract,
-        ExpressionAttributeNames={"#time_taken": "time"},
-        KeyConditionExpression="device_id = :enviro",
-        ExpressionAttributeValues={":enviro" : {"S" : "enviro"}},
-        TableName='iot_table')
-    return response['Items']
+def get_data():
+    done = False
+    start_key = None
+    allItems = []
+    while not done:
+        if start_key == None:
+            response = table.query(
+                KeyConditionExpression=Key('device_id').eq('enviro'))
+        else:
+            response = table.query(
+                KeyConditionExpression=Key('device_id').eq('enviro'),
+                ExclusiveStartKey=start_key
+        )
+        start_key = response.get('LastEvaluatedKey', None)
+        done = start_key is None
+        allItems.append(response['Items'])
+    new_df = pd.concat([pd.DataFrame(pd.json_normalize(x)) for x in allItems])
+
+    return new_df
 
