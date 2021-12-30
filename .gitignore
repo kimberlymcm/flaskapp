@@ -1,6 +1,7 @@
 # virtual env
-env/*
+venv/*
 __pycache__/*
+*.DS_Store
 
 # File that is actually uploaded to elastic beanstalk
 *.zip
@@ -11,10 +12,7 @@ __pycache__/*
 !.elasticbeanstalk/*.global.yml
 
 # Credential files
-aws_access_key.txt
-aws_secret_key.txt
 rds_config.py
+aws_config.py
 
-# Large files
-*.zip
-*.DS_Store
+

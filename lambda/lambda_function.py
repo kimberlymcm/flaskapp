@@ -41,26 +41,23 @@ def processBatch(event):
 
     cur = conn.cursor()
 
-    for record in event:
-        try:
-            payload_dict = record
-            json_col = json.dumps(payload_dict['data']) 
+    try:
+        json_col = json.dumps(event['data'])
 
-            cur.execute('insert into "SensorData" ("time", "device_id", "test", "data")' 
-                        ' values (%s, %s, %s, %s)', 
-                        (payload_dict['time'], payload_dict['device_id'], True,
-                        json_col))
-            print('hello')
-        except psycopg2.IntegrityError:
-            '''Duplicate primary key errors occur if Lambda calls this function more than once with the same message
-            Preventing duplicate inserts and ignoring failed attempts allows this function to be idempotent '''
-            logger.info('Integrity error: DeviceID=' + payload_dict['device_id'] + 
-                        ', DateTime=' + payload_dict['time'])
-        except:
-            logging.info('Error adding record')
-            cur.close()
-            conn.close()
-            raise            
+        cur.execute('insert into "SensorData" ("time", "device_id", "test", "data")'
+                    ' values (%s, %s, %s, %s)',
+                    (event['time'], event['device_id'], True,
+                    json_col))
+    except psycopg2.IntegrityError:
+        '''Duplicate primary key errors occur if Lambda calls this function more than once with the same message
+        Preventing duplicate inserts and ignoring failed attempts allows this function to be idempotent '''
+        logger.info('Integrity error: DeviceID=' + event['device_id'] +
+                    ', DateTime=' + event['time'])
+    except:
+        logging.info('Error adding record')
+        cur.close()
+        conn.close()
+        raise
         
     cur.close()
     conn.close()
