@@ -9,3 +9,12 @@ __pycache__/*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Credential files
+aws_access_key.txt
+aws_secret_key.txt
+rds_config.py
+
+# Large files
+*.zip
+*.DS_Store
