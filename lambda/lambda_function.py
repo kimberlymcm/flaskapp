@@ -46,7 +46,7 @@ def processBatch(event):
 
         cur.execute('insert into "SensorData" ("time", "device_id", "test", "data")'
                     ' values (%s, %s, %s, %s)',
-                    (event['time'], event['device_id'], True,
+                    (event['time'], event['device_id'], False,
                     json_col))
     except psycopg2.IntegrityError:
         '''Duplicate primary key errors occur if Lambda calls this function more than once with the same message

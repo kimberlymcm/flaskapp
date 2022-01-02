@@ -1,49 +1,54 @@
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en" />
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>My First Dashboard</title>
-</head>
-<body>
-<main role="main" class="inner cover">
- <h1 class="cover-heading">Air Quality Dashboard</h1>
- <p class="lead">Work in progress indoor air quality graphs in San Francisco</p>
-</main>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="chart" id="bargraph1">
-                <script>
-                    var graphs = {{plot1 | safe}};
-                    Plotly.plot('bargraph1',graphs,{});
-                </script>
+   <head lang="en">
+      <meta charset="UTF-8">
+      <title>
+         My First Dashboard
+      </title>
+   </head>
+   <body>
+      <main role="main" class="inner cover", style="font-family:verdana">
+         <h3 class="cover-heading">
+            Air Quality Dashboard: Mission District, San Francisco, CA
+         </h3>
+      </main>
+      <div class="container">
+         <div class="horizontalgap" style="width:100px"></div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="chart" id="bargraph1", style="height: 300px">
+                  <script>
+                     var graphs = {{plot1 | safe}};
+                     Plotly.plot('bargraph1', graphs, {});
+                  </script>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="chart" id="bargraph2">
-                <script>
-                    var graphs = {{plot2 | safe}};
-                    Plotly.plot('bargraph2', graphs,{});
-                </script>
+            <div class="col-md-6">
+               <div class="chart" id="bargraph2", style="height: 300px">
+                  <script>
+                     var graphs = {{plot2 | safe}};
+                     Plotly.plot('bargraph2', graphs,{});
+                  </script>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="chart" id="bargraph3">
-                <script>
-                    var graphs = {{plot3 | safe}};
-                    Plotly.plot('bargraph3',graphs,{});
-                </script>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+               <div class="chart" id="bargraph3", style="height: 300px">
+                  <script>
+                     var graphs = {{plot3 | safe}};
+                     Plotly.plot('bargraph3', graphs, {});
+                  </script>
+               </div>
             </div>
-        </div>
-    </div>
-</div>
-</body>
+            <div class="col-md-6"></div>
+         </div>
+      </div>
+   </body>
+   </p>
 </html>
