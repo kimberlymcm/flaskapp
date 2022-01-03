@@ -8,18 +8,17 @@
    <head lang="en">
       <meta charset="UTF-8">
       <title>
-         My First Dashboard
+         Environmental Dashboard
       </title>
    </head>
    <body>
       <main role="main" class="inner cover", style="font-family:verdana">
-         <h3 class="cover-heading">
-            Air Quality Dashboard: Mission District, San Francisco, CA
-         </h3>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Air Quality Dashboard: Mission District, San Francisco, CA</a>
+         </nav>
       </main>
       <div class="container">
-         <div class="horizontalgap" style="width:100px"></div>
-         <div class="row">
+         <div class="row mt-5">
             <div class="col-md-6">
                <div class="chart" id="bargraph1", style="height: 300px">
                   <script>
@@ -46,7 +45,14 @@
                   </script>
                </div>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+               <div class="chart" id="bargraph4", style="height: 300px">
+                  <script>
+                     var graphs = {{plot4 | safe}};
+                     Plotly.plot('bargraph4', graphs, {});
+                  </script>
+               </div>
+            </div>
          </div>
       </div>
    </body>
