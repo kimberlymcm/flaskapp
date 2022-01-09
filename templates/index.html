@@ -1,56 +1,75 @@
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en" />
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html>
    <head lang="en">
       <meta charset="UTF-8">
-      <title>
-         Environmental Dashboard
-      </title>
+      <title> Environmental Dashboard </title>
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en" />
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
    </head>
    <body>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
       <main role="main" class="inner cover", style="font-family:verdana">
          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Air Quality Dashboard: Mission District, San Francisco, CA</a>
          </nav>
       </main>
       <div class="container">
-         <div class="row mt-5">
-            <div class="col-md-6">
-               <div class="chart" id="bargraph1", style="height: 300px">
-                  <script>
-                     var graphs = {{plot1 | safe}};
-                     Plotly.plot('bargraph1', graphs, {});
-                  </script>
+         <div class="row my-2">
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
+               <div class="card">
+                  <h5 class="card-header">Particulate Matter</h5>
+                  <div class="card-body">
+                     <div class="chart" id="bargraph1", style="height: 275px">
+                        <script>
+                           var graphs = {{plot1 | safe}};
+                           Plotly.plot('bargraph1', graphs, {});
+                        </script>
+                     </div>
+                  </div>
                </div>
             </div>
-            <div class="col-md-6">
-               <div class="chart" id="bargraph2", style="height: 300px">
-                  <script>
-                     var graphs = {{plot2 | safe}};
-                     Plotly.plot('bargraph2', graphs,{});
-                  </script>
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
+               <div class="card">
+                  <h5 class="card-header">Temperature and Humidity</h5>
+                  <div class="card-body">
+                     <div class="chart" id="bargraph2", style="height: 275px">
+                        <script>
+                           var graphs = {{plot2 | safe}};
+                           Plotly.plot('bargraph2', graphs, {});
+                        </script>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
          <div class="row">
-            <div class="col-md-6">
-               <div class="chart" id="bargraph3", style="height: 300px">
-                  <script>
-                     var graphs = {{plot3 | safe}};
-                     Plotly.plot('bargraph3', graphs, {});
-                  </script>
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
+               <div class="card">
+                  <h5 class="card-header">Gas (unnormalized units)</h5>
+                  <div class="card-body">
+                     <div class="chart" id="bargraph3", style="height: 275px">
+                        <script>
+                           var graphs = {{plot3 | safe}};
+                           Plotly.plot('bargraph3', graphs, {});
+                        </script>
+                     </div>
+                  </div>
                </div>
             </div>
-            <div class="col-md-6">
-               <div class="chart" id="bargraph4", style="height: 300px">
-                  <script>
-                     var graphs = {{plot4 | safe}};
-                     Plotly.plot('bargraph4', graphs, {});
-                  </script>
+            <div class="col-12 col-md-6 mb-2 mb-md-0">
+               <div class="card">
+                  <h5 class="card-header">Light and Pressure</h5>
+                  <div class="card-body">
+                     <div class="chart" id="bargraph4", style="height: 275px">
+                        <script>
+                           var graphs = {{plot4 | safe}};
+                           Plotly.plot('bargraph4', graphs, {});
+                        </script>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
